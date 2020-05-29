@@ -5,6 +5,8 @@ function dq=qres(ei,eps,guide)
 %
 % Use Angular divergence  of incident beam from Monte Carlo simulations by Rob Bewley
 %
+% dq=qres(ei,eps,guide)
+
 
 % Widths of components to Q resolution on MERLIN
 x1=12;      % moderator-sample distance (m)
