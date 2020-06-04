@@ -10,14 +10,14 @@
 %% Get data into format that can be plotted and fitted with Horace routines
 
 %Data file
-spe_file='C:\Russell\Harry\CaFe2O4\MAR18301_Ei12.00meV.nxspe';
+spe_file='C:\my_directory\MAR18301_Ei12.00meV.nxspe';
 
 %If in nxspe format should not need "par" file, which specifies detector
 %positions, as already contained in the data file. Use blank string here
 par_file='';
 
 %Name of your choice for Horace sqw file
-sqw_mnf2='C:\Russell\Harry\CaFe2O4\MnF2.sqw';
+sqw_mnf2='C:\my_directory\CaFe2O4\MnF2.sqw';
 
 %Tell Horace we are using a direct geometry spectrometer
 emode=1;
@@ -26,7 +26,7 @@ emode=1;
 efix=12.0;
 
 %Make the sqw file that we then work with later
-gen_sqw_powder_test (spe_file, par_file, sqw_mnf2, efix, emode);
+gen_sqw_powder (spe_file, par_file, sqw_mnf2, efix, emode);
 
 %=====
 
