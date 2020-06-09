@@ -3,6 +3,15 @@ Selection of powder data analysis routines, provided without warranty
 
 Description of routines:
 
+Algorithms:
+
+powspec_ran - <IMPORTANT> this must be copied to your spinw directory .../swfiles/@spinw/. The routine ensures that powder spectra are calculated by SpinW using the
+same random number seed every time, which is crucial for fitting to work
+
+qres - a utility routine to calculate the transverse q resolution in the small angle approximation. It is written just for MERLIN right now, but changing the value 
+x2 in the code (secondary flight path) will make results roughly OK for MAPS or MARI also.
+
+---
 Template scripts:
 
 mnf2_example_plotting - demonstrates use of Horace and associated tools for plotting powder data, and taking cuts

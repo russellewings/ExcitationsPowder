@@ -25,6 +25,14 @@ J=[-0.02,0.4];%exchange guess values
 D=0;%single ion anisotropy keep zero
 bg=1;
 
+%===========================
+% <REALLY IMPORTANT POINT>:
+% In the ExcitationsPowder routines that you downloaded, you must copy the file "powspec_ran.m"
+% to the folder in your SpinW installation .../swfiles/@spinw (this is where the regular powspec.m
+% file lives - check by typing in Matlab "which powspec"). The routine ensures that the same random 
+% number seed is used every time - see above comment for details
+%===========================
+
 %Be careful running this - even with a reduced number of q points (e.g.
 %nRand = 400 inside the spinw_mnf2_fit code) it will still take a long time
 %to execute. The list = 1 option allows you to see how the fit is

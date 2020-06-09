@@ -43,6 +43,14 @@ s=rng(1);%random number seed, so that you get the same result each time
 %seeding the random number generator we ensure that these Q points are the
 %same every time we run the simulation, which aids fitting)
 
+%===========================
+% <REALLY IMPORTANT POINT>:
+% In the ExcitationsPowder routines that you downloaded, you must copy the file "powspec_ran.m"
+% to the folder in your SpinW installation .../swfiles/@spinw (this is where the regular powspec.m
+% file lives - check by typing in Matlab "which powspec"). The routine ensures that the same random 
+% number seed is used every time - see above comment for details
+%===========================
+
 [wfit,fitdata]=multifit(mnf2_IX,@spinw_mnf2_fit,{[scalefac,J,D,bg],ok,Ei,dE,dQ,s},...
     [1,1,1,0,1],'evaluate');
 %
