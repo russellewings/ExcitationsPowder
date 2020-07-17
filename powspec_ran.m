@@ -1,4 +1,4 @@
-function spectra = powspec_rand(obj, hklA, varargin)
+function spectra = powspec_ran(obj, hklA, varargin)
 % calculates powder averaged spin wave spectra
 %
 % ### Syntax
