@@ -39,6 +39,19 @@ try
         'Ei',Ei,'dQ',dQ);
 
     yout=abs(scalefac).*mnf2powspec.swConv';
+    
+    %Extra catch for very small imaginary values of S(Q,w):
+    rr=real(yout);
+    ii=imag(yout);
+    mr=max(max(abs(rr)));
+    mi=max(max(abs(ii)));
+    if mi<1e-5*mr
+        yout=rr;
+    else
+        disp('Warning: Significant imaginary values for S(Q,w) in SpinW calculation');
+        error('Significant imaginary values for S(Q,w) in SpinW calculation');
+    end
+    
     %Do the integration:
     yout=sum(yout,1);
     
