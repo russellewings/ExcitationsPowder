@@ -5,7 +5,8 @@
 %
 % ============
 % Russell Ewings - 20/5/2020
-%
+% (and Richard Dixey - 30/3/2021)
+
 
 %% Fitting with SpinW - part 1, refining when you already have a good guess for the parameters
 
@@ -17,7 +18,20 @@
 mnf2_cut=cut_sqw(sqw_mnf2,[0.2,0.03,4],[0.7,0.12,9],'-nopix');
 mnf2_IX=IX_dataset_2d(mnf2_cut.p{1},mnf2_cut.p{2},mnf2_cut.s,sqrt(mnf2_cut.e));
 mnf2_IX.signal(mnf2_IX.error==0 & mnf2_IX.signal==0)=NaN;
+
+%Tell the function which bits of QE space are OK (i.e. are not NaN):
+%Includes an important extra consideration, spotted by Richard Dixey of
+%QMUL, of what happens if an entire row or column of the signal matrix is
+%NaN. To get around this bug the first 3 lines are necessary:
+nonZeroRows = find(all(isnan(mnf2_IX.signal),2)); nonZeroCols = find(all(isnan(mnf2_IX.signal),1));
+mnf2_IX.signal(nonZeroRows,1)=1e-6; mnf2_IX.error(nonZeroRows,1)=1e6;
+mnf2_IX.signal(1,nonZeroCols)=1e-6; mnf2_IX.error(1,nonZeroCols)=1e6;
+%This replaces one element with a very small signal with a very big error,
+%just to avoid any weight being given to these points in fits.
+
+%Now find which points are "OK" or not
 ok=~isnan(mnf2_IX.signal);
+
 
 % A sensible, but not correct, guess for initial parameters
 scalefac=80;%intensity scale factor
